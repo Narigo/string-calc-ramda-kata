@@ -1,0 +1,17 @@
+{
+  "name": "ramda-kata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "stringcalc": "node --harmony stringCalcKata.js",
+    "start": "open SpecRunner.html"
+  },
+  "keywords": [],
+  "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {}
+}
