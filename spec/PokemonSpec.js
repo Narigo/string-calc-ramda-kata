@@ -91,14 +91,12 @@ describe("Pokemon-Kata", () => {
   });
   // const
   const minimumOfList = (pAndL) => reduce(min, head(pAndL.list), pAndL.list);
-  const nearestDistance = (positionAndList) => {
-    return pipe(
+  const nearestDistance = pipe(
       onlyNormalPokemons,
       positionsOfPokemons,
       distanceOfPokemons,
       minimumOfList
-    )(positionAndList);
-  };
+  );
 
   it("should find the nearest distance to a Pokemon of type 'Normal'", () => {
     expect(nearestDistance({position:playerPosition, list: mons})).toBeCloseTo(21.9, 1);
