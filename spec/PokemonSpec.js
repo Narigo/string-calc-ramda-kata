@@ -50,7 +50,7 @@ const mons = [
     name: 'Lapras',
     position: [20, 94]
   },
-]
+];
 
 const playerPosition = [4, 3];
 
@@ -74,7 +74,7 @@ const distance = curryN(
 const debug = curry((title, value) => {
   console.log(title, value);
   return value;
-})
+});
 
 describe("Pokemon-Kata", () => {
   const onlyNormalPokemons = (pAndL) => ({
@@ -104,8 +104,19 @@ describe("Pokemon-Kata", () => {
     expect(nearestDistance({position:playerPosition, list: mons})).toBeCloseTo(21.9, 1);
   });
 
-  it("should find the name of the nearest Pokemon of type 'Normal'");
-
+  it("should find the name of the nearest Pokemon of type 'Normal'", () => {
+      const nameOfNearestNormalPokemon = pipe(
+          filter(propEq('type', 'Normal')),
+          map(applySpec({
+              name: prop('name'),
+              distance: pipe(distance(playerPosition), prop('position'))
+          })),
+          sortBy(prop('distance')),
+          head,
+          prop('name')
+      )(mons);
+      expect(nameOfNearestNormalPokemon).toEqual('Mewtwo');
+  });
 });
 
 describe("distance", () => {
